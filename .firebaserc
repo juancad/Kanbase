@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kanbase-85b32": {
+      "hosting": {
+        "Kanbase": [
+          "kanbase-85b32"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kanbase-85b32"
+  }
+}

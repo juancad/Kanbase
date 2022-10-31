@@ -1,0 +1,42 @@
+<app-topbuttons></app-topbuttons>
+<mat-card>
+    <h2>Bienvenido.</h2>
+    <h3>¿No te has registrado todavía?</h3>
+    <form [formGroup]="form">
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input type="text" matInput formControlName="nombre">
+            <mat-error
+                *ngIf="form.controls['nombre'].hasError('maxlength') && !form.controls['nombre'].hasError('required')">
+                Por favor, introduce un nombre que no tenga más de 30 caracteres.</mat-error>
+            <mat-error *ngIf="form.controls['nombre'].hasError('required')">Por favor, introduce un nombre.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email">
+            <mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
+                Dirección de correo electrónico no válida.</mat-error>
+            <mat-error *ngIf="form.controls['email'].hasError('required')">Por favor, introduce una dirección de correo
+                electrónico.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+            <mat-error
+                *ngIf="form.controls['password'].hasError('minlength') && !form.controls['password'].hasError('required')">
+                La contraseña debe contener más de 6 caracteres.</mat-error>
+            <mat-error *ngIf="form.controls['password'].hasError('required')">Por favor, introduce una contraseña.
+            </mat-error>
+        </mat-form-field>
+        <br /><br />
+        <div class="buttons"><button mat-raised-button color="primary" [disabled]="form.invalid"
+                (click)="onSubmit()">Registrarse</button></div><br />
+        {{mensaje}}<br />
+        <div class="info">¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></div>
+        <br />
+        <div class="buttons"><button mat-stroked-button (click)="onClickGoogle()"><img
+                    src="https://firebasestorage.googleapis.com/v0/b/kanbase-85b32.appspot.com/o/images%2F2000px-Google_G_Logo.svg_.png?alt=media&token=80d82115-2843-4102-a401-ddd44c184f13"
+                    width="20px">&nbsp;&nbsp;Registrarse con google</button></div>
+        <br />
+    </form>
+</mat-card>
